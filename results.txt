@@ -1,0 +1,13 @@
+Prisoners:
+basic_tit_for_two_tats: 158.64
+basic_tit_for_tat: 155.42
+basic_defect: 155.08
+basic_threshold: 154.82
+basic_cooperate: 138.28
+
+Flippers:
+basic_immediate_flipper: 143.2
+basic_biased_flipper: 102.88
+basic_steady_flipper: 90.0
+basic_random_flipper: 76.48
+basic_non_flipper: 62.96
