@@ -60,8 +60,8 @@ def score(prisoners, flippers):
                     p1_flipped.append(p1_flip)
                     p2_flipped.append(p2_flip)
                     flips_remaining -= (f_play + 1) // 2
-                    assert(flips_remaining >= 0)
-                if False: # Debug information
+                    assert flips_remaining >= 0
+                if False:  # Debug information
                     print(prisoner1.__name__, prisoner2.__name__, flipper.__name__)
                     print(p1_score, p2_score, f_score, flips_remaining)
                 prisoner_scores[index1] += p1_score
