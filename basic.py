@@ -49,9 +49,9 @@ def basic_random_flipper(
     old_random = 1 if len(state) == 0 else state[0]
     # Xorshift 32
     new_random = old_random
-    new_random ^= (new_random << 13) % 2 ** 32
+    new_random ^= (new_random << 13) % 2**32
     new_random ^= new_random >> 17
-    new_random ^= (new_random << 5) % 2 ** 32
+    new_random ^= (new_random << 5) % 2**32
     if len(state) == 0:
         state.append(new_random)
     else:

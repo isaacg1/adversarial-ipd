@@ -10,10 +10,10 @@ def swap(play):
 
 def score(prisoners, flippers):
     prisoner_scores = [0 for _ in prisoners]
-    flipper_scores = [0 for _ in prisoners]
-    for (index1, prisoner1) in enumerate(prisoners):
-        for (index2, prisoner2) in enumerate(prisoners):
-            for (index_f, flipper) in enumerate(flippers):
+    flipper_scores = [0 for _ in flippers]
+    for index1, prisoner1 in enumerate(prisoners):
+        for index2, prisoner2 in enumerate(prisoners):
+            for index_f, flipper in enumerate(flippers):
                 p1_score = 0
                 p1_state = []
                 p1_plays = []
@@ -97,6 +97,7 @@ if __name__ == "__main__":
         basic_non_flipper,
         basic_biased_flipper,
     )
+    from submissions import paranoia_pattern
 
     prisoners = [
         basic_cooperate,
@@ -111,6 +112,7 @@ if __name__ == "__main__":
         basic_immediate_flipper,
         basic_non_flipper,
         basic_biased_flipper,
+        paranoia_pattern,
     ]
     scores = score(prisoners, flippers)
     print_scores(scores, prisoners, flippers)
