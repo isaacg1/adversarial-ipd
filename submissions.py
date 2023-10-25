@@ -113,3 +113,14 @@ def advanced_evil_p1_flipper(
             out += 2
 
     return out
+
+
+def tempting_trickster(
+    p1_moves, p1_flipped_moves, p2_moves, p2_flipped_moves, flips_left, state
+):
+    # Tease them a bit
+    target = "dc"[len(p1_moves) <= 3]
+
+    move = p1_moves[-1] == target
+    move |= (p2_moves[-1] == target) << 1
+    return move

@@ -1,12 +1,12 @@
 Prisoners:
-slightly_vindictive: 148.258
-holding_a_grudge: 145.719
-basic_tit_for_tat: 144.555
-basic_defect: 144.203
-use_their_response_unless_they_are_foolish: 143.938
-basic_threshold: 143.07
-basic_tit_for_two_tats: 141.273
-basic_cooperate: 129.047
+holding_a_grudge: 149.833
+slightly_vindictive: 149.132
+basic_defect: 148.986
+use_their_response_unless_they_are_foolish: 147.736
+basic_tit_for_tat: 145.979
+basic_threshold: 143.729
+basic_tit_for_two_tats: 142.951
+basic_cooperate: 130.236
 
 Flippers:
 basic_immediate_flipper: 158.625
@@ -16,4 +16,5 @@ paranoia_pattern: 115.328
 basic_biased_flipper: 104.109
 basic_steady_flipper: 101.078
 basic_random_flipper: 81.4375
+tempting_trickster: 73.3125
 basic_non_flipper: 54.7812
