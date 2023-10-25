@@ -101,6 +101,7 @@ if __name__ == "__main__":
         use_their_response_unless_they_are_foolish,
         holding_a_grudge,
         slightly_vindictive,
+        detect_evil,
         paranoia_pattern,
         basic_evil_p1_flipper,
         advanced_evil_p1_flipper,
@@ -116,6 +117,7 @@ if __name__ == "__main__":
         use_their_response_unless_they_are_foolish,
         holding_a_grudge,
         slightly_vindictive,
+        detect_evil,
     ]
     flippers = [
         basic_steady_flipper,

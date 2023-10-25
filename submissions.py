@@ -54,6 +54,50 @@ def slightly_vindictive(my_plays, their_flipped_plays, state):
     return "d"
 
 
+def detect_evil(my_plays, their_plays, state):
+    turn = len(their_plays)
+    # Batter through the flipper by sending more than 20 "c"s to start:
+    if turn < 22:
+        return "c"
+
+    # Defect last few turns, just because
+    if turn > 96:
+        return "d"
+
+    # See if it is plausible that they are always cooperating.  If so, cooperate:
+    their_coop = their_plays.count("c")
+    if their_coop + 20 >= turn:
+        return "c"
+
+    # seed possible returns to cooperation around the half-way point:
+    if turn > 49 and ((turn % 7) == 0):
+        return "c"
+
+    # Try to return to cooperation state if they "c"'d last turn in response
+    # or in coordination with my "c":
+    if (their_plays[-1:] == ["c"]) and (my_plays[-2:].count("c") > 0):
+        return "c"
+
+    # Assume flipper flips 20 "c" to "d" on their side:
+    their_defect = their_plays.count("d")
+    their_defect_min = their_defect - 20
+    their_defect_chance = their_defect_min / turn if (turn > 0) else 0
+
+    # Assume flipper flips 20 "c" to "d" on my side:
+    my_defect = my_plays.count("d")
+    my_defect_max_count = my_defect + 20
+    my_defect_chance = my_defect_max_count / turn if (turn > 0) else 0
+
+    # Tit-tit-tit for tat, but only if they are probably defecting more than
+    # they see me defecting:
+    if their_plays[-3:].count("d") > 0:
+        if my_defect_chance < their_defect_chance:
+            return "d"
+
+    # Otherwise, assume the best:
+    return "c"
+
+
 # Flippers
 def paranoia_pattern(
     p1_moves, p1_flipped_moves, p2_moves, p2_flipped_moves, flips_left, state
