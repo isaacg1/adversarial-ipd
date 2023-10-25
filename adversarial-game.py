@@ -97,7 +97,12 @@ if __name__ == "__main__":
         basic_non_flipper,
         basic_biased_flipper,
     )
-    from submissions import paranoia_pattern
+    from submissions import (
+        use_their_response_unless_they_are_foolish,
+        holding_a_grudge,
+        slightly_vindictive,
+        paranoia_pattern,
+    )
 
     prisoners = [
         basic_cooperate,
@@ -105,6 +110,9 @@ if __name__ == "__main__":
         basic_tit_for_tat,
         basic_tit_for_two_tats,
         basic_threshold,
+        use_their_response_unless_they_are_foolish,
+        holding_a_grudge,
+        slightly_vindictive,
     ]
     flippers = [
         basic_steady_flipper,
