@@ -78,3 +78,38 @@ def paranoia_pattern(
 
         case _:
             return 0
+
+
+def basic_evil_p1_flipper(
+    p1_moves, p1_flipped_moves, p2_moves, p2_flipped_moves, flips_left, state
+):
+    out = 0
+    if p1_moves[-1] == "c":
+        out += 1
+    return out
+
+
+def advanced_evil_p1_flipper(
+    p1_moves, p1_flipped_moves, p2_moves, p2_flipped_moves, flips_left, state
+):
+    out = 0
+    if p1_moves[-1] == "c":
+        out += 1
+    turn = len(p1_flipped_moves)
+    turns_left = 100 - turn
+    p1_coop = p1_moves.count("c")
+    p1_visible = p1_flipped_moves.count("c")
+    p1_flips_used = p1_coop - p1_visible
+    p1_coop_percent = p1_coop / turn if turn > 0 else p1_coop
+
+    p2_coop = p2_moves.count("c")
+    p2_visible = p2_flipped_moves.count("c")
+    p2_flips_used = p2_coop - p2_visible
+
+    flips_left = 40 - p1_flips_used - p2_flips_used
+
+    if p2_coop <= 10 or (flips_left > (p1_coop_percent * turns_left)):
+        if p2_moves[-1] == "c":
+            out += 2
+
+    return out
