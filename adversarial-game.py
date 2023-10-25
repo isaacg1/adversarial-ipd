@@ -70,18 +70,27 @@ def score(prisoners, flippers):
     return (prisoner_scores, flipper_scores)
 
 
+WIDTH = 30
+
+
 def print_scores(scores, prisoners, flippers):
     prisoner_scores, flipper_scores = scores
     print("Prisoners:")
     sorted_scores = sorted(zip(prisoners, prisoner_scores), key=lambda p: -p[1])
     for prisoner, total_score in sorted_scores:
         average_score = total_score / (2 * len(prisoners) * len(flippers))
-        print("{}: {:.6}".format(prisoner.__name__, average_score))
+        name = prisoner.__name__
+        if len(name) > WIDTH:
+            name = name[: WIDTH - 3] + "..."
+        print("{}: {}{:.6}".format(name, (WIDTH - len(name)) * " ", average_score))
     print("\nFlippers:")
     sorted_scores = sorted(zip(flippers, flipper_scores), key=lambda p: -p[1])
     for flipper, total_score in sorted_scores:
         average_score = total_score / (len(prisoners) ** 2)
-        print("{}: {:.6}".format(flipper.__name__, average_score))
+        name = flipper.__name__
+        if len(name) > WIDTH:
+            name = name[: WIDTH - 3] + "..."
+        print("{}: {}{:.6}".format(name, (WIDTH - len(name)) * " ", average_score))
 
 
 if __name__ == "__main__":

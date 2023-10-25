@@ -1,21 +1,21 @@
 Prisoners:
-holding_a_grudge: 156.358
-slightly_vindictive: 156.241
-basic_defect: 156.062
-use_their_response_unless_they_are_foolish: 156.012
-basic_tit_for_tat: 153.728
-basic_tit_for_two_tats: 150.191
-basic_threshold: 149.722
-detect_evil: 147.84
-basic_cooperate: 137.321
+holding_a_grudge:               156.358
+slightly_vindictive:            156.241
+basic_defect:                   156.062
+use_their_response_unless_t...: 156.012
+basic_tit_for_tat:              153.728
+basic_tit_for_two_tats:         150.191
+basic_threshold:                149.722
+detect_evil:                    147.84
+basic_cooperate:                137.321
 
 Flippers:
-basic_immediate_flipper: 140.469
-advanced_evil_p1_flipper: 137.827
-basic_evil_p1_flipper: 126.802
-paranoia_pattern: 101.815
-basic_biased_flipper: 92.4321
-basic_steady_flipper: 88.0123
-basic_random_flipper: 71.5926
-tempting_trickster: 65.358
-basic_non_flipper: 48.7407
+basic_immediate_flipper:        140.469
+advanced_evil_p1_flipper:       137.827
+basic_evil_p1_flipper:          126.802
+paranoia_pattern:               101.815
+basic_biased_flipper:           92.4321
+basic_steady_flipper:           88.0123
+basic_random_flipper:           71.5926
+tempting_trickster:             65.358
+basic_non_flipper:              48.7407
