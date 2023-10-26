@@ -114,10 +114,12 @@ if __name__ == "__main__":
         slightly_vindictive,
         detect_evil,
         masquerade,
+        prisoner_nn,
         paranoia_pattern,
         basic_evil_p1_flipper,
         advanced_evil_p1_flipper,
         tempting_trickster,
+        flipper_nn,
     )
 
     prisoners = [
@@ -131,6 +133,7 @@ if __name__ == "__main__":
         slightly_vindictive,
         detect_evil,
         masquerade,
+        prisoner_nn,
     ]
     flippers = [
         basic_steady_flipper,
@@ -142,6 +145,7 @@ if __name__ == "__main__":
         basic_evil_p1_flipper,
         advanced_evil_p1_flipper,
         tempting_trickster,
+        flipper_nn,
     ]
     scores = score(prisoners, flippers)
     print_scores(scores, prisoners, flippers)
