@@ -98,6 +98,49 @@ def detect_evil(my_plays, their_plays, state):
     return "c"
 
 
+def masquerade(my_plays, their_flipped_plays, state):
+    turn = len(my_plays)
+    if turn == 0:
+        return "c"
+    elif turn == 2:
+        return "d"
+    elif turn < 7:
+        return "c"
+
+    self_patterns = [
+        # basic_biased_flipper
+        ["d", "d", "c", "d", "d", "d", "d"],
+        # paranoia_pattern
+        ["d", "c", "c", "c", "d", "c", "d"],
+        ["d", "c", "d", "d", "c", "d", "c"],
+    ]
+
+    # self-detection
+    if (
+        their_flipped_plays[2] == "d"
+        and their_flipped_plays[1:7].count("d") < 3
+        and
+        # avoid getting tricked by tempting_trickster
+        not their_flipped_plays[:3] == ["d", "d", "d"]
+    ) or their_flipped_plays[:7] in self_patterns:
+        return "c"
+
+    # defect for the last few turns
+    if turn > 65:
+        return "d"
+
+    # if they often defect, defect as well
+    if their_flipped_plays.count("d") > 0.3 * len(their_flipped_plays):
+        return "d"
+
+    # tit-tit for tat
+    # inspired by slightly vindictive
+    if "d" in their_flipped_plays[-2:]:
+        return "d"
+
+    return "c"
+
+
 # Flippers
 def paranoia_pattern(
     p1_moves, p1_flipped_moves, p2_moves, p2_flipped_moves, flips_left, state

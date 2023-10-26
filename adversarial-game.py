@@ -30,6 +30,8 @@ def score(prisoners, flippers):
                 for _ in range(MOVES):
                     p1_play = prisoner1(p1_plays, p2_flipped, p1_state)
                     p2_play = prisoner2(p2_plays, p1_flipped, p2_state)
+                    assert p1_play == "c" or p1_play == "d"
+                    assert p2_play == "c" or p2_play == "d"
                     p1_plays.append(p1_play)
                     p2_plays.append(p2_play)
                     f_play = 0
@@ -111,6 +113,7 @@ if __name__ == "__main__":
         holding_a_grudge,
         slightly_vindictive,
         detect_evil,
+        masquerade,
         paranoia_pattern,
         basic_evil_p1_flipper,
         advanced_evil_p1_flipper,
@@ -127,6 +130,7 @@ if __name__ == "__main__":
         holding_a_grudge,
         slightly_vindictive,
         detect_evil,
+        masquerade,
     ]
     flippers = [
         basic_steady_flipper,
