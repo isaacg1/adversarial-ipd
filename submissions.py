@@ -421,3 +421,101 @@ def prisoner_nn(p1_plays, p2_flipped, p1_state):
     lastsact = (1 if p1_plays[-1] == "c" else -1) if p1_plays else 0
     act, *p1_state[0] = eval_nn(prisoner, [lastsact, lastact, *p1_state[0]], 6)
     return ["d", "c"][act > 0.5]
+
+
+# Shared pair: Less-deterministic
+def less_deterministic_prisoner(my_plays, their_plays, state):
+    if not state:
+        state.append(0xE1)  # Initial state
+        state.append(8)  # Whether to collect more info for seed
+        state.append(False)  # PRNG has been initialized?
+
+        return "c"
+
+    if state[1]:
+        # Seed the PRNG with the data we get
+        state[0] <<= 1
+        state[0] |= their_plays[-1] == "d"
+        state[1] -= 1
+
+        return "c"
+
+    if not state[2]:
+        # XOR with some data for some good old security through obscurity.
+        state[0] ^= 0x03
+        state[2] = True
+
+    # PRNG is properly seeded now!
+    my_choice = (state[0] & 0x8000) >> 15
+
+    tap16 = (state[0] & 0x8000) >> 15
+    tap15 = (state[0] & 0x4000) >> 14
+    tap13 = (state[0] & 0x1000) >> 12
+    tap4 = (state[0] & 0x0008) >> 3
+
+    feedback = tap16 ^ tap15 ^ tap13 ^ tap4
+
+    state[0] <<= 1
+    state[0] &= 0xFFFF
+    state[0] |= feedback
+
+    return "cd"[my_choice]
+
+
+def less_deterministic_flipper(
+    p1_moves, p1_flipped_moves, p2_moves, p2_flipped_moves, flips_left, state
+):
+    if not state:
+        state.append(0x21)  # Initial state
+        state.append(4)  # Whether to collect more info for seed
+        state.append(False)  # PRNG has been initialized?
+
+        return 0
+
+    if state[1]:
+        # Seed the PRNG with the data we get
+        state[0] <<= 1
+        state[0] |= p1_moves[-1] == "d"
+        state[0] <<= 1
+        state[0] |= p2_moves[-1] == "d"
+        state[1] -= 1
+
+        return 0
+
+    if not state[2]:
+        # XOR with some data for some good old security through obscurity.
+        state[0] ^= 0x44
+        state[2] = True
+
+    # PRNG is properly seeded now!
+    first_bit = (state[0] & 0x8000) >> 15
+
+    tap16 = (state[0] & 0x8000) >> 15
+    tap15 = (state[0] & 0x4000) >> 14
+    tap13 = (state[0] & 0x1000) >> 12
+    tap4 = (state[0] & 0x0008) >> 3
+
+    feedback = tap16 ^ tap15 ^ tap13 ^ tap4
+
+    state[0] <<= 1
+    state[0] &= 0xFFFF
+    state[0] |= feedback
+
+    second_bit = (state[0] & 0x8000) >> 15
+
+    tap16 = (state[0] & 0x8000) >> 15
+    tap15 = (state[0] & 0x4000) >> 14
+    tap13 = (state[0] & 0x1000) >> 12
+    tap4 = (state[0] & 0x0008) >> 3
+
+    feedback = tap16 ^ tap15 ^ tap13 ^ tap4
+
+    state[0] <<= 1
+    state[0] &= 0xFFFF
+    state[0] |= feedback
+
+    # Use the two bits to make a choice
+    choice = first_bit << 1
+    choice |= second_bit
+
+    return choice

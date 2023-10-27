@@ -46,6 +46,7 @@ def score(prisoners, flippers):
                         )
                     if f_play == 3 and flips_remaining == 1:
                         f_play = 1
+                    assert f_play == 0 or f_play == 1 or f_play == 2 or f_play == 3, "f_play: {}".format(f_play)
                     if p1_play == "c":
                         p2_score += 2
                     else:
@@ -118,11 +119,13 @@ if __name__ == "__main__":
         tit_forty_tat,
         blind_rage,
         stuck_buttons,
+        less_deterministic_prisoner,
         paranoia_pattern,
         basic_evil_p1_flipper,
         advanced_evil_p1_flipper,
         tempting_trickster,
         flipper_nn,
+        less_deterministic_flipper,
     )
 
     prisoners = [
@@ -140,6 +143,7 @@ if __name__ == "__main__":
         tit_forty_tat,
         blind_rage,
         stuck_buttons,
+        less_deterministic_prisoner,
     ]
     flippers = [
         basic_steady_flipper,
@@ -152,6 +156,7 @@ if __name__ == "__main__":
         advanced_evil_p1_flipper,
         tempting_trickster,
         flipper_nn,
+        less_deterministic_flipper,
     ]
     scores = score(prisoners, flippers)
     print_scores(scores, prisoners, flippers)
