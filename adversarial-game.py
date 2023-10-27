@@ -115,6 +115,9 @@ if __name__ == "__main__":
         detect_evil,
         masquerade,
         prisoner_nn,
+        tit_forty_tat,
+        blind_rage,
+        stuck_buttons,
         paranoia_pattern,
         basic_evil_p1_flipper,
         advanced_evil_p1_flipper,
@@ -134,6 +137,9 @@ if __name__ == "__main__":
         detect_evil,
         masquerade,
         prisoner_nn,
+        tit_forty_tat,
+        blind_rage,
+        stuck_buttons,
     ]
     flippers = [
         basic_steady_flipper,

@@ -141,6 +141,54 @@ def masquerade(my_plays, their_flipped_plays, state):
     return "c"
 
 
+def tit_forty_tat(my_plays, their_plays, state):
+    defects = their_plays.count("d")
+    if defects > 40:
+        return their_plays[-1]
+    else:
+        return "c"
+
+
+def blind_rage(my_plays, their_plays, state):
+    if not state:
+        # Start in a good mood
+        state.append(0)
+        return "c"
+
+    if state[0] >= 5:
+        # Calming down...
+        state[0] = 0
+        return "c"
+
+    if state[0]:
+        # Rage mode
+        state[0] += 1
+        return "d"
+
+    if their_plays[-1] == "d":
+        # "You dare defect against me? I'll show you!"
+        state[0] += 1
+        return "d"
+
+    # Normal course of operation.
+    return "c"
+
+
+def stuck_buttons(my_plays, their_plays, state):
+    if not state:
+        state.append(4)
+        state.append(-1)
+        return "c"
+
+    if state[0]:
+        state[0] -= 1
+        return my_plays[-1]
+    else:
+        state[0] = 4
+        state[1] += 1
+        return their_plays[state[1]]
+
+
 # Flippers
 def paranoia_pattern(
     p1_moves, p1_flipped_moves, p2_moves, p2_flipped_moves, flips_left, state
