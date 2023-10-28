@@ -261,6 +261,12 @@ def tempting_trickster(
     return move
 
 
+def basic_mod_4_flipper(
+    p1_moves, p1_flipped_moves, p2_moves, p2_flipped_moves, flips_left, state
+):
+    return len(p1_flipped_moves) % 4
+
+
 # Shared pair: Neural Network
 import math
 

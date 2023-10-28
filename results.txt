@@ -1,0 +1,30 @@
+Prisoners:
+masquerade:                     161.342
+prisoner_nn:                    159.586
+slightly_vindictive:            156.733
+basic_defect:                   156.667
+basic_tit_for_tat:              152.456
+holding_a_grudge:               152.083
+use_their_response_unless_t...: 150.275
+basic_threshold:                149.678
+blind_rage:                     149.656
+stuck_buttons:                  147.017
+basic_tit_for_two_tats:         146.661
+less_deterministic_prisoner:    141.511
+tit_forty_tat:                  139.672
+detect_evil:                    139.658
+basic_cooperate:                128.283
+
+Flippers:
+flipper_nn:                     143.44
+basic_immediate_flipper:        142.24
+advanced_evil_p1_flipper:       139.858
+basic_evil_p1_flipper:          127.249
+basic_mod_4_flipper:            101.427
+paranoia_pattern:               101.298
+basic_biased_flipper:           97.4622
+basic_steady_flipper:           95.8133
+less_deterministic_flipper:     84.4089
+basic_random_flipper:           79.96
+tempting_trickster:             60.3378
+basic_non_flipper:              56.4622

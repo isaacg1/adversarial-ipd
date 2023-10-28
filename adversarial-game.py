@@ -46,7 +46,9 @@ def score(prisoners, flippers):
                         )
                     if f_play == 3 and flips_remaining == 1:
                         f_play = 1
-                    assert f_play == 0 or f_play == 1 or f_play == 2 or f_play == 3, "f_play: {}".format(f_play)
+                    assert (
+                        f_play == 0 or f_play == 1 or f_play == 2 or f_play == 3
+                    ), "f_play: {}".format(f_play)
                     if p1_play == "c":
                         p2_score += 2
                     else:
@@ -126,6 +128,7 @@ if __name__ == "__main__":
         tempting_trickster,
         flipper_nn,
         less_deterministic_flipper,
+        basic_mod_4_flipper,
     )
 
     prisoners = [
@@ -157,6 +160,7 @@ if __name__ == "__main__":
         tempting_trickster,
         flipper_nn,
         less_deterministic_flipper,
+        basic_mod_4_flipper,
     ]
     scores = score(prisoners, flippers)
     print_scores(scores, prisoners, flippers)
