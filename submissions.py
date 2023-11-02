@@ -189,6 +189,20 @@ def stuck_buttons(my_plays, their_plays, state):
         return their_plays[state[1]]
 
 
+def string_prisoner(my_plays, their_plays, state):
+    s = "zbemvqjmwqozghuxgymklypogluxxnfvdzcmcusncnsqnuktdhxesvaipgyphcpfgmirmmqlahnkofttkcshrbpvslqngmkjmspkrdzujs"
+    if state:
+        i = "cd".index(my_plays[-1])
+        j = "cd".index(their_plays[-1])
+    else:
+        state.append(18)
+        i, j = 1, 0
+    h = state[-1]
+    h = ord(s[4 * h + 2 * i + j]) - 97
+    state[0] = h
+    return "cd"[h % 2]
+
+
 # Flippers
 def paranoia_pattern(
     p1_moves, p1_flipped_moves, p2_moves, p2_flipped_moves, flips_left, state
@@ -265,6 +279,22 @@ def basic_mod_4_flipper(
     p1_moves, p1_flipped_moves, p2_moves, p2_flipped_moves, flips_left, state
 ):
     return len(p1_flipped_moves) % 4
+
+
+def string_flipper(
+    p1_moves, p1_flipped_moves, p2_moves, p2_flipped_moves, flips_left, state
+):
+    s = "wvwyhbwyjplcvuowuuwyobcyunxypirmhisyxmsenxqypkcyomgqwnuaomrypzkyxnwblegqdssijkbhnjywnnmrpzwygxsepbwypfsysn"
+    if state:
+        i = "cd".index(p1_moves[-1])
+        j = "cd".index(p2_moves[-1])
+    else:
+        state.append(13)
+        i, j = 0, 1
+    h = state[-1]
+    h = ord(s[4 * h + 2 * i + j]) - 97
+    state[0] = h
+    return h % 4
 
 
 # Shared pair: Neural Network

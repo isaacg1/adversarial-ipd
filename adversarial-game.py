@@ -122,6 +122,7 @@ if __name__ == "__main__":
         blind_rage,
         stuck_buttons,
         less_deterministic_prisoner,
+        string_prisoner,
         paranoia_pattern,
         basic_evil_p1_flipper,
         advanced_evil_p1_flipper,
@@ -129,6 +130,7 @@ if __name__ == "__main__":
         flipper_nn,
         less_deterministic_flipper,
         basic_mod_4_flipper,
+        string_flipper,
     )
 
     prisoners = [
@@ -147,6 +149,7 @@ if __name__ == "__main__":
         blind_rage,
         stuck_buttons,
         less_deterministic_prisoner,
+        string_prisoner,
     ]
     flippers = [
         basic_steady_flipper,
@@ -161,6 +164,7 @@ if __name__ == "__main__":
         flipper_nn,
         less_deterministic_flipper,
         basic_mod_4_flipper,
+        string_flipper,
     ]
     scores = score(prisoners, flippers)
     print_scores(scores, prisoners, flippers)
